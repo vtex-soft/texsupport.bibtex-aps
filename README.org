@@ -1,0 +1,14 @@
+#+TITLE: aps-nameyear - bibtex implementation of American Physical Society bibliography style
+
+
+This package provides American Physical Society 
+(APS) BibTeX reference style (aps-nameyear.bst) for Springer journals
+
+#+BEGIN_EXAMPLE
+\bibliographystyle{aps-nameyear}
+\bibliography{<bib-file>}
+#+END_EXAMPLE
+
+A demonstration database is provided to show the style output.
+
+This style require ~natbib~ package.
