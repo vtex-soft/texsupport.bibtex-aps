@@ -349,7 +349,7 @@ FUNCTION {byear}
                     {t #1 #4 substring$ 's :=
                      t #5 #1 substring$ 'longest.label :=
                          longest.label is.num not	
-                            {s "year" make.tag  * longest.label * }
+                            {s "year" make.tag  longest.label * }
                             {t "year" make.tag }
                         if$
                     }
@@ -1335,15 +1335,38 @@ FUNCTION {format.url}
 
 
 
+FUNCTION {fix.doi.doimain}{
+  't := % content
+  t text.length$ #10 >
+    {
+      t #1 #10 substring$ "http://dx." = 
+        {
+          "https://" t #11 global.max$ substring$ * 't :=
+        }
+        {
+          t #1 #4 substring$ "http" = 
+            'skip$
+            { "https://doi.org/" t * 't := }
+          if$
+        }
+      if$ 
+    }
+    'skip$
+  if$ 
+  t 
+}
+
+
+% Ensuring "https://doi.org/" at begin of doi
 FUNCTION {format.doi}
 { doi empty$
+    {""}
+    {
+      "nodoi" is.in.list
         {""}
-        {
-         "nodoi" is.in.list
-       {""}
-         {"doi:\doiurl{" doi * "}" *}
-     if$
-        }
+        { "\doiurl{" doi fix.doi.doimain * "}" * }
+      if$
+    }
   if$
 }
 
@@ -2636,7 +2659,7 @@ REVERSE {reverse.pass}
 
 FUNCTION {write.preambule}
 { "\begin{thebibliography}{" number.label int.to.str$ * "}" * write$ newline$
-    "% BibTex style file: aps.bst  (nameyear), 2013-04-23" write$ newline$
+    "% BibTex style file: aps.bst  (nameyear), 2017-12-15" write$ newline$
     "\ifx \bisbn   \undefined \def \bisbn  #1{ISBN #1}\fi" write$ newline$
     "\ifx \binits  \undefined \def \binits#1{#1} \fi" write$ newline$
     "\ifx \bauthor  \undefined \def \bauthor#1{#1} \fi" write$ newline$
