@@ -1,5 +1,5 @@
 #+TITLE: aps-nameyear - bibtex implementation of American Physical Society bibliography style
-
+#+OPTIONS: toc:nil
 
 This package provides American Physical Society 
 (APS) BibTeX reference style (aps-nameyear.bst) for Springer journals

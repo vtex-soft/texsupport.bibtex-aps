@@ -1,8 +1,3 @@
-
-# Table of Contents
-
-
-
 This package provides American Physical Society 
 (APS) BibTeX reference style (aps-nameyear.bst) for Springer journals
 
