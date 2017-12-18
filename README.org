@@ -11,4 +11,4 @@ This package provides American Physical Society
 
 A demonstration database is provided to show the style output.
 
-This style require ~natbib~ package.
+This style requires ~natbib~ package.
