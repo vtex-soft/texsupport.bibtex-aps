@@ -12,6 +12,30 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
+% First comes an example EPS file -- just ignore it and
+% proceed on the \documentclass line
+% your LaTeX will extract the file if required
+\begin{filecontents*}{example.eps}
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 19 19 221 221
+%%CreationDate: Mon Sep 29 1997
+%%Creator: programmed by hand (JK)
+%%EndComments
+gsave
+newpath
+  20 20 moveto
+  20 220 lineto
+  220 220 lineto
+  220 20 lineto
+closepath
+2 setlinewidth
+gsave
+  .4 setgray fill
+grestore
+stroke
+grestore
+\end{filecontents*}
+%
 \RequirePackage{fix-cm}
 %
 %\documentclass{svjour3}                     % onecolumn (standard format)
@@ -34,7 +58,7 @@
 % \newcommand{}{}
 %
 % Insert the name of "your journal" with
- \journalname{my journal}
+% \journalname{myjournal}
 %
 % Definitions for the journal names
 \newcommand{\aap}{{Astron. Astrophys.}}
@@ -88,7 +112,7 @@ subject classification numbers as needed.
 Your text comes here. Separate text sections with
 \section{Section title}
 \label{sec:1}
-Text with citations \cite{RefB} and \cite{RefJ}.
+Text with citations \cite{RefJ}, \cite{RefB} and \cite{RefP}.
 \subsection{Subsection title}
 \label{sec:2}
 as required. Don't forget to give each section
@@ -139,10 +163,21 @@ number & number & number \\
 %If you'd like to thank anyone, place your comments here
 %and remove the percent signs.
 %\end{acknowledgements}
+
+
+% Authors must disclose all relationships or interests that 
+% could have direct or potential influence or impart bias on 
+% the work: 
+%
+% \section*{Conflict of interest}
+%
+% The authors declare that they have no conflict of interest.
+
+
 % BibTeX users please use one of
 \bibliographystyle{aps-nameyear}      % American Physical Society (APS) style, author-year citations
 \bibliography{example}                % name your BibTeX data base
-\nocite{*}
+\nocite{*}                            % generate bibliography entries for every entry in each bib
 
 % Non-BibTeX users please use
 \begin{thebibliography}{}
@@ -156,18 +191,18 @@ L.A. Aamport, \mbox{G-Animal's} Journal \textbf{41} (7), 73 (1986).
 This is a full ARTICLE entry
 
 % Format for books
-\bibitem[\protect\citeauthoryear{Knuth}{1981}]{book-full}
+\bibitem[\protect\citeauthoryear{Knuth}{1981}]{RefB}
 D.E. Knuth, \textit{Seminumerical algorithms}, 2nd edn.
 The Art of Computer Programming,
 vol. 2 (Addison-Wesley, Reading, 1981).
 This is a full BOOK entry
 
-
 % Format for proceedings
-\bibitem[\protect\citeauthoryear{Oz and Yannakakis}{1983}]{RefB}
+\bibitem[\protect\citeauthoryear{Oz and Yannakakis}{1983}]{RefP}
 W.V. Oz, M. Yannakakis (eds.),
 in \textit{All ACM Conferences} (Academic Press, Boston, 1983).
 This is a full PROCEEDINGS entry
+
 % Other formats available: INPROCEEDINGS, PHDTHESIS, TECHREPORT, 
 % UNPUBLISHED, MISC, MASTERSTHESIS, MANUAL, INCOLLECTION, BOOKLET
 % etc
